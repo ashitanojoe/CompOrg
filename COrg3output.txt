@@ -1,0 +1,30 @@
+Script started on Sat Feb 15 19:00:49 2003
+[wallerj@eris CompOrg]$ nasm -f elf COrg-3.asm
+[wallerj@eris CompOrg]$ ld -s COrg-3.o
+[wallerj@eris CompOrg]$ ./a.out not_a_file hello
+Error opening input file
+[wallerj@eris CompOrg]$ ./a.out joe
+Missing arguments
+Please use the format a.out (source) (destination)
+[wallerj@eris CompOrg]$ ./a.out joseph aaron waller
+Too many arguments
+Please use the format a.out (source) (destination)
+[wallerj@eris CompOrg]$ ./a.out COrg-3.asm COrg-1.asm
+Error opening file for writing
+[wallerj@eris CompOrg]$ ./a.out COrg-3.asm backup.asm
+[wallerj@eris CompOrg]$ ls -l
+[00mtotal 48
+-rwxrwxr-x    1 wallerj  wallerj      1168 Feb 15 19:01 [01;32ma.out[00m
+-rw-rw-r--    1 wallerj  wallerj      4523 Feb 15 19:02 [00mbackup.asm[00m
+-rw-rw-r--    1 wallerj  wallerj      3550 Jan 23 09:53 [00mCOrg-1.asm[00m
+-rw-rw-r--    1 wallerj  wallerj      2532 Jan 22 22:21 [00mCOrg-1b.asm[00m
+-rw-rw-r--    1 wallerj  wallerj      5470 Jan 30 13:27 [00mCOrg-2.asm[00m
+-rw-rw-r--    1 wallerj  wallerj       669 Jan 30 13:25 [00mCOrg2output.txt[00m
+-rw-rw-r--    1 wallerj  wallerj      4523 Feb 15 18:56 [00mCOrg-3.asm[00m
+-rw-rw-r--    1 wallerj  wallerj      2160 Feb 15 19:01 [00mCOrg-3.o[00m
+-rw-rw-r--    1 wallerj  wallerj         0 Feb 15 19:00 [00mCOrg3output.txt[00m
+-rw-rw-r--    1 wallerj  wallerj       628 Feb 15 14:25 [00mtemplate.asm[00m
+[m[wallerj@eris CompOrg]$ diff COrg-3.asm backup.asm
+[wallerj@eris CompOrg]$ exit
+
+Script done on Sat Feb 15 19:02:52 2003

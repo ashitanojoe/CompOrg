@@ -1,0 +1,45 @@
+Script started on Thu Jan 30 13:22:51 2003
+[wallerj@cslab10 CompOrg]$ ./a.out
+Macro #1 Demo.
+
+str1 is: I like to 
+str2 is: concatenate strings.
+
+CONCAT str1, str2, final_str
+
+str_final is: I like to concatenate strings.
+
+---------------------------------------
+Macro #2 Demo.
+
+EBX is: 124
+ECX is: 23
+EDX is: 17
+EDI is: 8
+ESI is: 25476
+
+CLRREGS EBX, ECX, EDI
+
+EBX is: 0
+ECX is: 0
+EDX is: 17
+EDI is: 0
+ESI is: 25476
+
+---------------------------------------
+Macro #3 Demo.
+
+SHOWINT EAX, EDI, [a], endl, EBX, ECX, ESI, EDX
+
+1
+0
+5
+134516860
+0
+0
+25476
+17
+[wallerj@cslab10 CompOrg]$ exit
+exit
+
+Script done on Thu Jan 30 13:23:01 2003

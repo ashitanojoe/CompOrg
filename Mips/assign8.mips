@@ -1,0 +1,79 @@
+## Module		:		assign8.mips
+## Programemr	:		Joe Waller
+## Description	:		MIPS program that will read the coefficients
+##						of the quadratic equation from the user and
+##						output whether or not the equation has two
+##						distinct real roots, two repeated real roots,
+##						or two non-real roots
+
+## -----------------------------------------------------------------
+
+			.data
+
+	prompt:		.asciiz		"Please enter the coefficients\n"
+	prompta:	.asciiz		"a: "
+	promptb:	.asciiz		"b: "
+	promptc:	.asciiz		"c: "
+	final:		.asciiz		"The equation has "
+	positive:	.asciiz		"two distinct real roots.\n"
+	negative:	.asciiz		"two non-real roots.\n"
+	des_zero:	.asciiz		"two repeated real roots.\n"
+	
+	
+
+## -----------------------------------------------------------------
+
+			.text
+
+main:		li		$v0, 4				# syscall to output string
+			la		$a0, prompt			# load address of string to
+			syscall						# output
+			
+			la		$a0, prompta
+			syscall
+			li		$v0, 5				# prompt for a
+			syscall
+			add		$t0, $v0, $zero		# $t0 holds a
+			
+			li		$v0, 4
+			la		$a0, promptb
+			syscall
+			li		$v0, 5				# prompt for b
+			syscall
+			add		$t1, $v0, $zero		# $t1 holds b
+			
+			li		$v0, 4
+			la		$a0, promptc
+			syscall
+			li		$v0, 5				# prompt for c
+			syscall
+			add		$t2, $v0, $zero		# $t2 holds c
+
+			li		$s0, 4				# calculate 4ac
+			mult	$t0, $s0			# ''
+			mflo	$s0					# ''
+			mult	$s0, $t2			# ''
+			mflo	$s0					# $s0 holds 4ac
+
+			mult	$t1, $t1			# calculate b^2
+			mflo	$s1					# $s1 holds b^2
+
+			sub		$t3, $s1, $s0		# $t3 holds discriminant
+
+			li		$v0, 4
+			la		$a0, final
+			syscall
+
+			beq		$t3, $zero, zero	# if discriminant is 0
+			slt		$t0, $t3, $zero
+			bne		$t0, $zero, less	# if discriminant is < 0
+			
+			la		$a0, positive		# if discriminant is > 0
+			j		end
+
+less:		la		$a0, negative
+			j		end
+			
+zero:		la		$a0, des_zero
+
+end:		syscall						# output the final answer
